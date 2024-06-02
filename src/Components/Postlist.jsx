@@ -7,26 +7,7 @@ import LoadingSpinner from "./loadingspinner";
 
 
 const Postlist = () => {
-  const { postList, addinitialPost } = useContext(PostListData);
-const [fetching,setFetching]=useState(false);
-
-  useEffect(()=>{
-    setFetching(true)
-    const Controller=new AbortController();
-    const signal=Controller.signal;
-    fetch('https://dummyjson.com/posts',{signal})
-      .then(res => res.json())
-      .then((obj)=>{addinitialPost(obj.posts)
-        setFetching(false)
-      });
-      return ()=>{
-        Controller.abort();
-      }
-      
-
-  },[])
-  
-
+  const { postList,fetching } = useContext(PostListData);
 
   return (
     <>
